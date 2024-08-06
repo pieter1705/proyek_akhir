@@ -3,9 +3,7 @@
 	date_default_timezone_set("Asia/Bangkok");
 	$date_now = date("Y-m-d");
 	include '../dbconnect.php';
-	// if($_SESSION['log']!="Logged"){
-	// 	header("location:login.php");
-	// }
+	
 	
 	if (isset($_POST["submit"])) {
 		$jobname=$_POST['jobname'];
