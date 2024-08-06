@@ -11,14 +11,14 @@ if (isset($_POST["login"])) {
     $pass = mysqli_real_escape_string($koneksi, $_POST['password']);
     $queryuser = mysqli_query($koneksi, "SELECT * FROM registrasi where username='$user'");
     $cariuser = mysqli_fetch_assoc($queryuser);
-    if (password_verify($pass, $cariuser['password'])) {
+    if ($pass === $cariuser['password']) {
         $_SESSION['userid'] = $cariuser['id'];  
         $_SESSION['username'] = $cariuser['username'];
         $_SESSION['log'] = 'login';
 
         if ($cariuser) {
             echo '<script>alert("anda berhasil login sebagai '.$cariuser['username'].'");windows.location="../website/web.php"</script>';
-            header('location:../job/admin/index.php');
+            header('location:../job/index.php');
         } else {
             echo '<script>alert("Data yang anda masukan salah !!");history.go(-1);</script>';         
     } 
